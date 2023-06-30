@@ -6,7 +6,7 @@ export const SignupForm = () => {
   const [refreshPage, setRefreshPage] = useState(false);
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
-
+//fetch 
   useEffect(() => {
     console.log("FETCH! ");
     fetch("/customers")
@@ -16,7 +16,7 @@ export const SignupForm = () => {
         console.log(data);
       });
   }, [refreshPage]);
-
+//Validation
   const formSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("Must enter email"),
     name: yup.string().required("Must enter a name").max(15),
@@ -28,12 +28,13 @@ export const SignupForm = () => {
       .typeError("Please enter an Integer")
       .max(125),
   });
-
+//form
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
       age: "",
+      
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
